@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="controlador.ControladorPrincipal">
+   <children>
+      <Pane id="pane" fx:id="pane" layoutX="6.0" layoutY="7.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <TextField id="cmpTamanioDatagrama" fx:id="cmpTamanioDatagrama" layoutX="151.0" layoutY="31.0" prefHeight="25.0" prefWidth="149.0" />
+            <TextField id="cmpMTU" fx:id="cmpMTU" layoutX="369.0" layoutY="31.0" />
+            <Label layoutX="20.0" layoutY="35.0" text="Tamaño del datagrama:" />
+            <Label layoutX="331.0" layoutY="35.0" text="MTU:" />
+            <Button id="btnCalcular" fx:id="btnCalcular" layoutX="534.0" layoutY="31.0" mnemonicParsing="false" onAction="#accionBotonCalcular" text="Calcular" />
+            <TextArea id="txtArea" fx:id="txtArea" layoutX="46.0" layoutY="85.0" prefHeight="279.0" prefWidth="509.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
