@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ControladorPrincipal">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ControladorPrincipal">
    <children>
       <Pane id="pane" fx:id="pane" layoutX="3.0" layoutY="4.0" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -22,18 +22,17 @@
                   <Font name="Consolas Bold" size="15.0" />
                </font></Button>
             <Accordion layoutX="46.0" layoutY="153.0" />
-            <TableView layoutX="68.0" layoutY="146.0" prefHeight="200.0" prefWidth="465.0">
+            <TableView fx:id="datagramas" layoutX="68.0" layoutY="146.0" prefHeight="200.0" prefWidth="465.0">
               <columns>
-                <TableColumn prefWidth="108.0" text="Longitud Total " />
-                <TableColumn minWidth="0.0" prefWidth="51.0" text="Flags" />
-                  <TableColumn prefWidth="92.0" text="Offset Bin" />
-                  <TableColumn prefWidth="95.0" text="Offset Dec" />
-                  <TableColumn prefWidth="118.0" text="16 Bits Hex" />
+                <TableColumn fx:id="longitudTotal" prefWidth="108.0" text="Longitud Total " />
+                <TableColumn fx:id="flags" minWidth="0.0" prefWidth="51.0" text="Flags" />
+                  <TableColumn fx:id="offsetBin" prefWidth="92.0" text="Offset Bin" />
+                  <TableColumn fx:id="offsetDec" prefWidth="95.0" text="Offset Dec" />
+                  <TableColumn fx:id="bits16" prefWidth="118.0" text="16 Bits Hex" />
               </columns>
             </TableView>
-            <TextField id="cmpMTU" fx:id="cmpMTU1" layoutX="244.0" layoutY="50.0" />
+            <TextField id="cmpMTU" fx:id="cmpTamanioDatagrama" layoutX="244.0" layoutY="50.0" />
          </children>
       </Pane>
    </children>
 </AnchorPane>
-
