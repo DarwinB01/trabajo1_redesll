@@ -3,30 +3,39 @@ package Modelo;
 import java.util.ArrayList;
 
 public class Fragmentacion {
-	
-	public ArrayList<Datagrama> calcularLongitudFragmento(String tamañoDatagrama, String mtuRed) {
+
+	public static ArrayList<Datagrama> calcularLongitudFragmento(String tamañoDatagrama, String mtuRed) {
 		ArrayList<Datagrama> datagramas = new ArrayList<>();
 		int tamDatagrama = Integer.parseInt(tamañoDatagrama);
 		int mtu = Integer.parseInt(mtuRed);
-		
-		int resta = mtu - tamDatagrama;
-		
-		if(resta < 0) {
-			return null;
-		}else {
-			String flags = "010";
-			String offsetBinario = "0000000000000";
-			String offsetDecimal = binarioADecimal(offsetBinario) + "";
-			String bits16 = flags + offsetBinario;
-			String digitosHexadecimales = binarioAHexadecimal(bits16);
-			Datagrama datagrama = new Datagrama(tamañoDatagrama, flags, offsetBinario, offsetDecimal, digitosHexadecimales);
-			
-			datagramas.add(datagrama);
-			return datagramas;
+		int numFragmentos = (tamDatagrama / mtu) + 1;
+		int offset = 0;
+
+		for (int i = 0; i < numFragmentos; i++) {
+			System.out.println(i + "-----" + numFragmentos);
+			if (i == numFragmentos - 1) {
+
+				Datagrama datagrama = new Datagrama(tamDatagrama - 20 + "", "000", obtenerBinario(offset), offset + "",
+						"000" + obtenerBinario(offset));
+				tamDatagrama = tamDatagrama - (mtu - 20);
+				datagramas.add(datagrama);
+
+			} else {
+
+				Datagrama datagrama = new Datagrama(mtu + "", "001", "0000000000000",
+						binarioADecimal("0000000000000") + "", binarioAHexadecimal("0010000000000000"));
+				tamDatagrama = tamDatagrama - (mtu - 20);
+				offset = offset + (mtu - 20);
+				datagramas.add(datagrama);
+
+			}
+
 		}
+		return datagramas;
+
 	}
-	
-	public int binarioADecimal(long binario) {
+
+	public static int binarioADecimal(long binario) {
 		int decimal = 0;
 		int posicion = 0;
 		for (int x = String.valueOf(binario).length() - 1; x >= 0; x--) {
@@ -40,8 +49,8 @@ public class Fragmentacion {
 		}
 		return decimal;
 	}
-	
-	public String binarioAHexadecimal(String numero) {
+
+	public static String binarioAHexadecimal(String numero) {
 		long binario = Long.parseLong(numero);
 		String hexadecimal = "";
 		String digitosHexa = "0123456789ABCDEF";
@@ -53,8 +62,8 @@ public class Fragmentacion {
 
 		return hexadecimal;
 	}
-	
-	public int binarioADecimal(String binario) {
+
+	public static int binarioADecimal(String binario) {
 		int decimal = 0;
 		int posicion = 0;
 		for (int x = binario.length() - 1; x >= 0; x--) {
@@ -68,4 +77,26 @@ public class Fragmentacion {
 		}
 		return decimal;
 	}
+
+	public static String obtenerBinario(int decimal) {
+		if (decimal <= 0) {
+			return "0";
+		}
+		StringBuilder binario = new StringBuilder();
+		while (decimal > 0) {
+			short residuo = (short) (decimal % 2);
+			decimal = decimal / 2;
+			// Insertar el dígito al inicio de la cadena
+			binario.insert(0, String.valueOf(residuo));
+		}
+		String binarioS = "" + binario;
+
+		for (int i = 0; i < (13 - binario.length()); i++) {
+
+			binarioS = "0" + binarioS;
+
+		}
+		return binarioS;
+	}
+
 }
