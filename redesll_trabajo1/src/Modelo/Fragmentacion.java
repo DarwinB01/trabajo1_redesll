@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Fragmentacion {
 
-	public static ArrayList<Datagrama> calcularLongitudFragmento(String tamañoDatagrama, String mtuRed) {
+	public static ArrayList<Datagrama> calcularLongitudFragmento(String tamaÃ±oDatagrama, String mtuRed) {
 		ArrayList<Datagrama> datagramas = new ArrayList<>();
-		int tamDatagrama = Integer.parseInt(tamañoDatagrama);
+		int tamDatagrama = Integer.parseInt(tamaÃ±oDatagrama);
 		int mtu = Integer.parseInt(mtuRed);
 		int numFragmentos = (tamDatagrama / mtu) + 1;
 		int offset = 0;
@@ -16,7 +16,7 @@ public class Fragmentacion {
 			if (i == numFragmentos - 1) {
 
 				Datagrama datagrama = new Datagrama(tamDatagrama - 20 + "", "000", obtenerBinario(offset), offset + "",
-						"000" + binarioAHexadecimal(obtenerBinario(offset)));
+						binarioAHexadecimal("000" + obtenerBinario(offset)));
 				tamDatagrama = tamDatagrama - (mtu - 20);
 				datagramas.add(datagrama);
 
@@ -86,7 +86,7 @@ public class Fragmentacion {
 		while (decimal > 0) {
 			short residuo = (short) (decimal % 2);
 			decimal = decimal / 2;
-			// Insertar el dígito al inicio de la cadena
+			// Insertar el dÃ­gito al inicio de la cadena
 			binario.insert(0, String.valueOf(residuo));
 		}
 		String binarioS = "" + binario;
@@ -100,3 +100,4 @@ public class Fragmentacion {
 	}
 
 }
+
