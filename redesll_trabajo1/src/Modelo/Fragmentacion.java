@@ -22,8 +22,8 @@ public class Fragmentacion {
 
 			} else {
 
-				Datagrama datagrama = new Datagrama(mtu + "", "001", "0000000000000",
-						binarioADecimal("0000000000000") + "", binarioAHexadecimal("0010000000000000"));
+				Datagrama datagrama = new Datagrama(mtu + "", "001", obtenerBinario(offset),
+						binarioADecimal(obtenerBinario(offset)) + "", binarioAHexadecimal(obtenerBinario(offset)));
 				tamDatagrama = tamDatagrama - (mtu - 20);
 				offset = offset + (mtu - 20);
 				datagramas.add(datagrama);
