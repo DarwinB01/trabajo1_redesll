@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Fragmentacion {
 
-	public static ArrayList<Datagrama> calcularLongitudFragmento(String tamaÃ±oDatagrama, String mtuRed) {
+	public static ArrayList<Datagrama> calcularLongitudFragmento(String tamañoDatagrama, String mtuRed) {
 		ArrayList<Datagrama> datagramas = new ArrayList<>();
-		int tamDatagrama = Integer.parseInt(tamaÃ±oDatagrama);
+		int tamDatagrama = Integer.parseInt(tamañoDatagrama);
 		int mtu = Integer.parseInt(mtuRed);
 		int numFragmentos = (tamDatagrama / mtu) + 1;
 		int offset = 0;
