@@ -2,6 +2,11 @@ package Modelo;
 
 import java.util.ArrayList;
 
+/**
+ * Clase que contine todos los componentes de un datagrama
+ * @author Darwin Bonilla, Alejandra Sarmiento y Freddy Castro
+ *
+ */
 public class Datagrama {
 	private String longitudTotal;
 	private String flags;
@@ -11,6 +16,9 @@ public class Datagrama {
 	private String offset13Bits;
 	private int mtu;
 
+	/*
+	 * Metodo que permite inicializar un datagrama
+	 */
 	public Datagrama(String longitudTotal, String flags, String offsetBin, String offsetDec, String bits16) {
 		this.longitudTotal = longitudTotal;
 		this.flags = flags;
@@ -19,6 +27,9 @@ public class Datagrama {
 		this.bits16 = bits16;
 	}
 
+	/*
+	 * Metodo que permite inicializar un datagrama
+	 */
 	public Datagrama(int MTU, int longitud) {
 
 		this.mtu = MTU;
