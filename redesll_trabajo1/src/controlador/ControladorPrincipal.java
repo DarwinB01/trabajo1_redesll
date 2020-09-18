@@ -16,6 +16,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
+
+/**
+ * Clase que controla todas las acciones de la interfaz principal
+ * @author Darwin Bonilla, Alejandra Sarmiento y Freddy Castro
+ *
+ */
 public class ControladorPrincipal {
 	
 	private Fragmentacion fragmentacion;
@@ -55,15 +61,21 @@ public class ControladorPrincipal {
 	@FXML
 	private TableColumn<Datagrama, String> bits16;
 
+	/**
+	 * Metodo que contiene la accion que debe realizar el programa cuando se da clic
+	 * en el boton
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void accionBotonCalcular(ActionEvent event) {
 		fragmentacion = new Fragmentacion();
-		String tamañoDatagrama = cmpTamanioDatagrama.getText();
+		String tamaÃ±oDatagrama = cmpTamanioDatagrama.getText();
 		String mtu = cmpMTU.getText();
 		
 		items = FXCollections.observableArrayList();
 		
-		ArrayList<Datagrama> datos = fragmentacion.calcularLongitudFragmento(tamañoDatagrama, mtu);
+		ArrayList<Datagrama> datos = fragmentacion.calcularLongitudFragmento(tamaÃ±oDatagrama, mtu);
 		
 		for(Datagrama datagramas: datos) {
 			items.add(datagramas);
