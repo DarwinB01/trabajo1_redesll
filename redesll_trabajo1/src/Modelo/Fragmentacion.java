@@ -2,11 +2,22 @@ package Modelo;
 
 import java.util.ArrayList;
 
+/**
+ * Clase que contiene los metodos del programa
+ * @author Darwin Bonilla, Alejandra Sarmiento y Freddy Castro
+ *
+ */
 public class Fragmentacion {
 
-	public static ArrayList<Datagrama> calcularLongitudFragmento(String tama�oDatagrama, String mtuRed) {
+	/**
+	 * Metodo que permite realizar la fragmentacion del datagrama
+	 * @param tamañoDatagrama longitud total del datagrama
+	 * @param mtuRed unidad maxima de transpaso
+	 * @return retorna una lista con los fragmentos
+	 */
+	public static ArrayList<Datagrama> calcularLongitudFragmento(String tamañoDatagrama, String mtuRed) {
 		ArrayList<Datagrama> datagramas = new ArrayList<>();
-		int tamDatagrama = Integer.parseInt(tama�oDatagrama);
+		int tamDatagrama = Integer.parseInt(tamañoDatagrama);
 		int mtu = Integer.parseInt(mtuRed);
 		int numFragmentos = (tamDatagrama / mtu) + 1;
 		int offset = 0;
@@ -35,6 +46,11 @@ public class Fragmentacion {
 
 	}
 
+	/**
+	 * Metodo que convierte un numero binario a decimal
+	 * @param binario numero binario que se desea convertir
+	 * @return numero decimal
+	 */
 	public static int binarioADecimal(long binario) {
 		int decimal = 0;
 		int posicion = 0;
@@ -50,6 +66,11 @@ public class Fragmentacion {
 		return decimal;
 	}
 
+	/**
+	 * Metodo que permite convertir un numero binario a hexadecimal
+	 * @param numero numero binario a convertir
+	 * @return numero hexadecimal
+	 */
 	public static String binarioAHexadecimal(String numero) {
 		long binario = Long.parseLong(numero);
 		String hexadecimal = "";
@@ -63,6 +84,11 @@ public class Fragmentacion {
 		return hexadecimal;
 	}
 
+	/**
+	 * Permite convertir un numero binario a decimal
+	 * @param binario numero numero binario a convertir
+	 * @return numero decimal
+	 */
 	public static int binarioADecimal(String binario) {
 		int decimal = 0;
 		int posicion = 0;
@@ -78,6 +104,11 @@ public class Fragmentacion {
 		return decimal;
 	}
 
+	/**
+	 * Metodo que convierte un numero decimal a binario
+	 * @param decimal numero decimal a convertir
+	 * @return numero binario
+	 */
 	public static String obtenerBinario(int decimal) {
 		if (decimal <= 0) {
 			return "0";
@@ -86,7 +117,7 @@ public class Fragmentacion {
 		while (decimal > 0) {
 			short residuo = (short) (decimal % 2);
 			decimal = decimal / 2;
-			// Insertar el dígito al inicio de la cadena
+			// Insertar el dÃ­gito al inicio de la cadena
 			binario.insert(0, String.valueOf(residuo));
 		}
 		String binarioS = "" + binario;
